@@ -1,43 +1,45 @@
 
-// const
-
-const
-    div1 = document.getElementById("d1"),
-    div2 = document.getElementById("d2"),
-
-    li1 = document.getElementById("li1"),
-    li2 = document.getElementById("li2");
-
-let 
-    index = 0,
-    y,
-    t = 1000,
-    tick = 0;
 
 const 
-    log = () => console.log(t * tick++);
+    btPlay = document.querySelector('#bt-play'),
 
-// EL
+    player = (()=> {
+        let 
+            refIntv   = 0,
+            counter   = 0,
+            onProcess = false; // security to avoid multiple setInterval processes
+
+        function playerAction() {
+            console.clear()
+            console.log( 'playing', ++counter)
+        }
+
+        return {
+            play() {
+                if (onProcess) return  // security to avoid doing setInterval() twice
+      
+                onProcess = true
+                counter   = 0
+                console.clear()
+                console.log('start playing')
+                refIntv = setInterval( playerAction , 2000)
+            },
+
+            stop() {
+                if (!onProcess) return  // security to avoid doing clearInterval() twice
+ 
+                clearInterval( refIntv )
+                onProcess = false
+      
+                console.clear()
+                console.log('stop playing')
+            }
+        }
+    })();
 
 
-li1.addEventListener("click", start)
-li2.addEventListener("click", stop)
-
-
-// function
-
-
-function start(e) {
-  if (e.target.matches('#li1') && !y) {
-    y = setInterval(log, t);
-  }
+btPlay.onclick = () => {
+    if (btPlay.classList.toggle('stopped'))  player.play()
+    else                                     player.stop()
 }
-
-function stop(e) {
-    if (e.target.matches('#li2')) {
-      clearInterval(y);
-      y = null;
-    }
-  }
-
 

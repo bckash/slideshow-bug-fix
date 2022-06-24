@@ -1,83 +1,15 @@
 
-:root {
-    font-family: Arial, Helvetica, sans-serif;
+
+button { 
+    margin : 1em 3em;
+    width  : 5em; 
 }
 
-.br {
-    border: 1px grey solid;
+#bt-play::after { 
+    content : 'play';
 }
 
-.example {
-    text-align: center;
-}
-
-
-/* nav */
-
-
-ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    /* margin: 0;
-    padding: 0; */
-  }
-
-li {
-    margin: 1rem;
-}
-
-li:hover {
-    cursor: pointer;
-}
-
-/* slideshow */
-
-
-.slideshow, .slideshow div {
-    width: 40rem;
-    height: 100px;
-}
-
-.slideshow {
-    overflow: hidden;
-    margin: auto;
-    position: relative;
-}
-
-.slideshow div {
-    position: absolute;
-    transform: translateX(40rem)
-}
-
-#d1 {
-    background-color: aqua;
-}
-
-#d2 {
-    background-color: blanchedalmond;
-}
-
-#d3 {
-    background-color: cadetblue;
-}
-
-
-
-/* animation */
-
-
-.animation__full {
-    animation: ksh-in 1s forwards, ksh-out 1s 3s forwards;
-}
-
-@keyframes ksh-out {
-    from {transform: translateX(0);}
-    to {transform: translateX(-40rem)}
-}
-
-@keyframes ksh-in {
-    from {transform: translateX(40rem);}
-    to {transform: translateX(0rem)}
+#bt-play.stopped::after { 
+    content : 'stop';
 }
 

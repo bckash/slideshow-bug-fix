@@ -5,9 +5,9 @@ const
 
     player = (()=> {
         let 
-            refIntv   = 0,
+            refIntv,
             counter   = 0,
-            onProcess = false; // security to avoid multiple setInterval processes
+            onProcess = false; // security 
 
         function playerAction() {
             console.clear()
@@ -15,8 +15,9 @@ const
         }
 
         return {
+
             play() {
-                if (onProcess) return  // security to avoid doing setInterval() twice
+                if (onProcess) return  // security 
       
                 onProcess = true
                 counter   = 0
@@ -26,11 +27,10 @@ const
             },
 
             stop() {
-                if (!onProcess) return  // security to avoid doing clearInterval() twice
+                if (!onProcess) return  // security 
  
                 clearInterval( refIntv )
                 onProcess = false
-      
                 console.clear()
                 console.log('stop playing')
             }
